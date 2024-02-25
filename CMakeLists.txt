@@ -17,10 +17,7 @@ endif()
 
 find_package(Boost 1.67
              COMPONENTS
-                system
-                filesystem
-				date_time
-                unit_test_framework
+             headers
              REQUIRED)
 
 find_package (Threads)
@@ -51,9 +48,7 @@ endif()
 target_link_libraries(
     core
     INTERFACE
-        Boost::system
-        Boost::filesystem
-        Boost::date_time
+        Boost::headers
         Threads::Threads
         OpenSSL::SSL
         OpenSSL::Crypto)

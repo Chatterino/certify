@@ -1,7 +1,12 @@
 function (certify_verify_add_test test_file)
+    find_package(Boost 1.67
+                 COMPONENTS
+                 filesystem
+                 REQUIRED)
     get_filename_component(target_name ${test_file} NAME_WE)
     add_executable(${target_name} ${test_file})
     target_link_libraries(${target_name} certify::core)
+    target_link_libraries(${target_name} Boost::filesystem)
     target_include_directories(${target_name} PRIVATE ../include ../tests/extras/include)
     if ( CMAKE_COMPILER_IS_GNUCC )
         target_compile_options(${target_name} PRIVATE -Wall -Wextra -pedantic)
